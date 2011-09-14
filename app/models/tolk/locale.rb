@@ -151,7 +151,7 @@ module Tolk
 
       phrases = Tolk::Phrase.scoped(:order => 'tolk_phrases.key ASC')      
       phrases = phrases.scoped(:conditions => ['tolk_phrases.id IN(?)', translations.map(&:phrase_id).uniq])
-      phrases.merge(options))
+      phrases.merge(options)
     end
     
     def search_phrases_without_translation(query, options = {})

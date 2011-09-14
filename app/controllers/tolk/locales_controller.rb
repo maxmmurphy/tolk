@@ -10,9 +10,9 @@ module Tolk
     def show
       respond_to do |format|
         format.html do
-          @phrases = @locale.phrases_without_translation(params[:page])
+          @phrases = @locale.phrases_without_translation
         end
-        format.atom { @phrases = @locale.phrases_without_translation(params[:page], :per_page => 50) }
+        format.atom { @phrases = @locale.phrases_without_translation }
         format.yaml { render :text => @locale.to_hash.ya2yaml(:syck_compatible => true) }
       end
     end
@@ -24,11 +24,11 @@ module Tolk
     end
 
     def all
-      @phrases = @locale.phrases_with_translation(params[:page])
+      @phrases = @locale.phrases_with_translation
     end
 
     def updated
-      @phrases = @locale.phrases_with_updated_translation(params[:page])
+      @phrases = @locale.phrases_with_updated_translation
       render :all
     end
 
